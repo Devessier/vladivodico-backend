@@ -3,7 +3,6 @@ import { hash } from 'argon2';
 import uuid from 'uuid/v4';
 
 import { ModelArgs } from './index';
-import { PolicyGetCachedOptions } from '@hapi/catbox';
 
 export interface InternalUser {
     id: number;
