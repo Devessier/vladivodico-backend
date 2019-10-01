@@ -19,6 +19,10 @@ interface GetUserWithUUIDArgs extends ModelArgs {
     uuid: string;
 }
 
+interface GetUserWithUsername extends ModelArgs {
+    username: string;
+}
+
 interface CreateUserArgs extends ModelArgs {
     username: string;
     email: string;
@@ -54,6 +58,24 @@ export async function getUserWithUUID({
         } = await db.query(command.build());
 
         return user;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+}
+
+export async function getUserWithUsername({
+    db,
+    username,
+}: GetUserWithUsername): Promise<InternalUser | null> {
+    try {
+        const cmd = query.select`*`.from`users`.where`username = ${username}`;
+
+        const {
+            rows: [user],
+        } = await db.query(cmd.build());
+
+        return user || null;
     } catch (e) {
         console.error(e);
         return null;
