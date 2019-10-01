@@ -1,0 +1,61 @@
+{
+    "name": "vladivodico-backend",
+    "version": "1.0.0",
+    "description": "Vladivodico REST API done with Node.js and TypeScript",
+    "main": "src/app.ts",
+    "scripts": {
+        "start": "node -r ts-node/register -r dotenv/config src/app.ts",
+        "watch": "nodemon --watch 'src/**/*.ts' -e ts,json --exec 'ts-node --files -r dotenv/config src/app.ts'",
+        "lint": "tslint --fix --project tsconfig.json -t codeFrame 'src/**/*.ts'",
+        "build": "tsc"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint",
+            "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Devessier/vladivodico-backend.git"
+    },
+    "author": "Devessier",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Devessier/vladivodico-backend/issues"
+    },
+    "homepage": "https://github.com/Devessier/vladivodico-backend#readme",
+    "devDependencies": {
+        "@types/argon2": "^0.15.0",
+        "@types/hapi__cookie": "^10.1.0",
+        "@types/hapi__hapi": "^18.2.5",
+        "@types/hapi__joi": "^15.0.4",
+        "@types/node": "^12.7.8",
+        "@types/pg": "^7.11.2",
+        "@types/uuid": "^3.4.5",
+        "cz-conventional-changelog": "^3.0.2",
+        "dotenv": "^8.1.0",
+        "husky": "^3.0.7",
+        "nodemon": "^1.19.3",
+        "prettier": "^1.18.2",
+        "ts-node": "^8.4.1",
+        "tslint": "^5.20.0",
+        "tslint-config-airbnb": "^5.11.2",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript": "^3.6.3"
+    },
+    "dependencies": {
+        "@hapi/cookie": "^10.1.2",
+        "@hapi/hapi": "^18.4.0",
+        "@hapi/joi": "^16.1.4",
+        "argon2": "^0.25.0",
+        "pg": "^7.12.1",
+        "sqliterally": "^1.0.1",
+        "uuid": "^3.3.3"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+}
